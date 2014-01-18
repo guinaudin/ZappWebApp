@@ -8,7 +8,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <p>Test Wamp</p>
+        <p>Test Wamp jsp okok</p>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.zappwebapp.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
