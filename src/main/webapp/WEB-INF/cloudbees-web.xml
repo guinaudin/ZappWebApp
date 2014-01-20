@@ -14,8 +14,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
+<cloudbees-web-app xmlns="http://www.cloudbees.com/xml/webapp/1">
+<appid>zappWebWapp</appid>
+
 <resource name="jdbc/zappProfile" auth="Container" type="javax.sql.DataSource">
     <param name="username" value="guinaudin" />
     <param name="password" value="zappTeam" />
     <param name="url" value="jdbc:cloudbees://zappProfile" />
 </resource>
+</cloudbees-web-app>
