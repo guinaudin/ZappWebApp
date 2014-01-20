@@ -36,7 +36,9 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.28</version>
+            <version>5.1.28-bin</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/mysql-connector-java-5.1.28-bin.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.apache.mahout</groupId>
