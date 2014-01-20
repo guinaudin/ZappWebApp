@@ -26,28 +26,26 @@ limitations under the License.
 
 <?xml version="1.0"?>
 <cloudbees-web-app xmlns="http://www.cloudbees.com/xml/webapp/1">
-  <environment name="cloud">
-    <appid>zappWebWapp</appid>
+ <appid>zappWebWapp</appid>
     <context-param>
-      <param-name>application.environment</param-name>
-      <param-value>cloud</param-value>
+        <param-name>application.environment</param-name>
+        <param-value>prod</param-value>
     </context-param>
-    <resource name="jdbc/zappprofilr" auth="Container" type="javax.sql.DataSource">
-      <param name="username" value="guinaudin" />
-      <param name="password" value="zappTeam" />
-      <param name="url" value="jdbc:cloudbees://zappprofile" />
+
+    <resource name="jdbc/zappprofile" auth="Container" type="javax.sql.DataSource">
+        <param name="username" value="guinaudin"/>
+        <param name="password" value="zappTeam"/>
+        <param name="url" value="jdbc:cloudbees://zappprofile"/>
+        <!-- Connection Pool settings -->
+        <param name="maxActive" value="5"/>
+        <param name="maxIdle" value="2"/>
+        <param name="maxWait" value="10000"/>
+        <param name="removeAbandoned" value="true"/>
+        <param name="removeAbandonedTimeout" value="60"/>
+        <param name="logAbandoned" value="true"/>
+
+        <!-- Purge invalid connections -->
+        <param name="validationQuery" value="SELECT 1"/>
+        <param name="testOnBorrow" value="true"/>
     </resource>
-  </environment>
-  <environment name="local">
-    <appid>zappWebWapp</appid> 
-    <context-param>
-      <param-name>application.environment</param-name>
-      <param-value>local</param-value>
-    </context-param>
-    <resource name="jdbc/countries" auth="Container" type="javax.sql.DataSource">
-        <param name="username" value="guinaudin" />
-        <param name="password" value="zappTeam" />
-        <param name="url" value="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile" />
-        <param name="driverClassName" value="com.mysql.jdbc.ClientDriver"/>
-    </resource>  </environment>   
 </cloudbees-web-app>
