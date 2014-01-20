@@ -27,7 +27,6 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 public class ProfileManager {
-
     private final Connection myCon;
     private Statement stateListArtistPreferences;
     private Statement stateListNumberUsers;
@@ -37,7 +36,8 @@ public class ProfileManager {
     
     public ProfileManager() throws SQLException {
         //Etablissement de la connection à la BDD
-        System.setProperty("jdbc.drivers", "com.mysql.jdbc.Driver");
+        //System.setProperty("jdbc.drivers", "com.mysql.jdbc.Driver");
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
         myCon = DriverManager.getConnection("ec2-50-19-213-178.compute-1.amazonaws.com:3306", "guinaudin", "zappTeam");
         //Pas d'auto commit
         myCon.setAutoCommit(false);
