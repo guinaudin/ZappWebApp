@@ -14,11 +14,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-
-<root>
-    <resource name="jdbc/zappProfile" auth="Container" type="javax.sql.DataSource">
-        <param name="username" value="guinaudin" />
-        <param name="password" value="zappTeam" />
-        <param name="url" value="jdbc:cloudbees://zappProfile" />
-    </resource>
-</root>
+<resource name="jdbc/zappProfile" auth="Container" type="javax.sql.DataSource">
+    <param name="username" value="guinaudin" />
+    <param name="password" value="zappTeam" />
+    <param name="url" value="jdbc:cloudbees://zappProfile" />
+</resource>
