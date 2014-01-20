@@ -1,6 +1,6 @@
 <?php
 try{
-$db = new PDO('mysql:host=localhost;dbname=profile','root','chameau89');
+$db = new PDO('ec2-50-19-213-178.compute-1.amazonaws.com:3306;dbname=zappprofile','guinaudin','zappTeam');
 foreach($db->query('SELECT userId from Users') as $row) {
         print(json_encode($row));
     }
