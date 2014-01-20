@@ -38,7 +38,7 @@ public class ProfileManager {
     public ProfileManager() throws SQLException {
         //Etablissement de la connection à la BDD
         System.setProperty("jdbc.drivers", "com.mysql.jdbc.Driver");
-        myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306", "guinaudin", "zappTeam");
+        myCon = DriverManager.getConnection("ec2-50-19-213-178.compute-1.amazonaws.com:3306", "guinaudin", "zappTeam");
         //Pas d'auto commit
         myCon.setAutoCommit(false);
         
