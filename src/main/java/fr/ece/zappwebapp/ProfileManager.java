@@ -171,6 +171,7 @@ public class ProfileManager implements Serializable{
                     myCon.commit();
                 }
             }
+            artistsList = "";
         }
     }
 
