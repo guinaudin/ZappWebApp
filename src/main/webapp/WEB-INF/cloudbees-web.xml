@@ -20,6 +20,6 @@ limitations under the License.
 <resource name="jdbc/zappProfile" auth="Container" type="javax.sql.DataSource">
     <param name="username" value="guinaudin" />
     <param name="password" value="zappTeam" />
-    <param name="url" value="jdbc:cloudbees://zappProfile" />
+    <param name="url" value="jdbc:cloudbees://zappprofile" />
 </resource>
 </cloudbees-web-app>
