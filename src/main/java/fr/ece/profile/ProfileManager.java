@@ -1,4 +1,4 @@
-package fr.ece.zappwebapp;
+package fr.ece.profile;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,8 +27,7 @@ import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
-public class ProfileManager implements Serializable{
-
+public class ProfileManager implements Serializable {
     private final Connection myCon;
     private Statement stateListArtistPreferences;
     private Statement stateListNumberUsers;
@@ -38,7 +37,6 @@ public class ProfileManager implements Serializable{
     
     public ProfileManager() throws SQLException, ClassNotFoundException {
         //Etablissement de la connection à la BDD
-        //System.setProperty("jdbc.drivers", "com.mysql.jdbc.Driver");
         Class.forName("com.mysql.jdbc.Driver");
         myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
         //Pas d'auto commit
@@ -240,5 +238,13 @@ public class ProfileManager implements Serializable{
             }
             System.out.println("");
         }
+    }
+
+    public Map<Integer, List<RecommendedItem>> getUsersArtistRecommendations() {
+        return usersArtistRecommendations;
+    }
+    
+    public Connection myCon() {
+        return myCon;
     }
 }
