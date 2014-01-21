@@ -34,7 +34,11 @@ public class ArtistsRecommendationProcess {
         resultSet = selectArtistIdListPreparedStatement.executeQuery();
         myCon.commit();
         
-        String[]artistTab = resultSet.getString(1).split(",");
+        String temp = resultSet.getString(1);
+        System.out.println(resultSet.getString(1));
+        String[]artistTab = temp.split(",");
+        for(int i = 0; i < artistTab.length; i++)
+            System.out.println(artistTab[i]);
 
         if(artistTab.length > 0) {
             for(int i = 0; i < artistTab.length; i++) {
