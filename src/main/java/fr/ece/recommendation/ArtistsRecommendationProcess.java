@@ -31,14 +31,14 @@ public class ArtistsRecommendationProcess {
         List<Artist> artistList = new ArrayList<Artist>();
         
         selectArtistIdListPreparedStatement.setLong(1, userId);
-        resultSet = selectArtistPreparedStatement.executeQuery();
+        resultSet = selectArtistIdListPreparedStatement.executeQuery();
         myCon.commit();
         
         String[]artistTab = resultSet.getString(1).split(",");
 
         if(artistTab.length > 0) {
             for(int i = 0; i < artistTab.length; i++) {
-                selectArtistPreparedStatement.setLong(1, userId);
+                selectArtistPreparedStatement.setLong(1, Long.parseLong(artistTab[i]));
                 resultSet = selectArtistPreparedStatement.executeQuery();
                 myCon.commit();
 
