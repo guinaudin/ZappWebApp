@@ -47,10 +47,10 @@
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
         </dependency>
-        <dependency> 
-            <groupId>com.yammer.dropwizard</groupId> 
-            <artifactId>dropwizard-client</artifactId> 
-            <version>0.6.2</version> 
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+            <version>1.18</version>
         </dependency>
         <!--
         <dependency>
