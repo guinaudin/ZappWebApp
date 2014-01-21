@@ -20,7 +20,7 @@ public class RecommendationService {
             //TO DO modify userID
             ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(1);
             Gson gson= new Gson();
-            System.out.println(gson.toJson(artistsRecommendation));
+            gson.toJson(artistsRecommendation);
         } 
         catch (SQLException ex) {
             Logger.getLogger(RecommendationService.class.getName()).log(Level.SEVERE, null, ex);
