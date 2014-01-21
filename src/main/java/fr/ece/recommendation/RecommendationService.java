@@ -21,6 +21,8 @@ public class RecommendationService {
             ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(1);
             Gson gson= new Gson();
             gson.toJson(artistsRecommendation);
+            
+            System.out.println(gson.toJson(artistsRecommendation));
         } 
         catch (SQLException ex) {
             Logger.getLogger(RecommendationService.class.getName()).log(Level.SEVERE, null, ex);
