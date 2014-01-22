@@ -9,9 +9,11 @@
     </head>
     <body>
         <p>Storing recommendations in MySQL...</p>
+        <%--
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
         <% profileManager.saveArtistsRecommendations(); %>
+        --%>
     </body>
 </html>
