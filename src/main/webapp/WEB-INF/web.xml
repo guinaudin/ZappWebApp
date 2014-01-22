@@ -19,9 +19,9 @@
         <servlet-name>RecommendationService</servlet-name>
         <url-pattern>/REST/*</url-pattern>
     </servlet-mapping>
+</web-app>
     <!--
     <listener>
         <listener-class>fr.ece.historic.ApplicationStartup</listener-class>
     </listener>
     -->
-</web-app>

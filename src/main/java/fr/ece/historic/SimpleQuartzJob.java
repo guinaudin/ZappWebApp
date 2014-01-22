@@ -1,4 +1,4 @@
-package fr.ece.historic;
+/*package fr.ece.historic;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -13,4 +13,4 @@ public class SimpleQuartzJob implements Job {
     public void execute(JobExecutionContext context) throws JobExecutionException {
         System.out.println("hello");
     }
-}
+}*/
