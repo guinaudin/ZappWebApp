@@ -43,7 +43,8 @@ public class ArtistsRecommendationProcess {
                 selectArtistPreparedStatement.setLong(1, Long.parseLong(artistTab[i]));
                 resultSet = selectArtistPreparedStatement.executeQuery();
                 myCon.commit();
-
+                resultSet.next();
+                
                 artistList.add(new Artist(resultSet.getString(1), resultSet.getString(2)));
             }
             artistsRecommendation = new ArtistsRecommendation(userId, artistList);
