@@ -23,7 +23,7 @@ public class ArtistsRecommendationProcess {
         myCon.setAutoCommit(false);
         
         selectArtistPreparedStatement = myCon.prepareStatement("SELECT firstName, familyName FROM Artists WHERE artistId = ?");
-        selectArtistIdListPreparedStatement = myCon.prepareStatement("SELECT artistIdList FROM Artistsrecommendations WHERE userId = ?");
+        selectArtistIdListPreparedStatement = myCon.prepareStatement("SELECT artistIdList FROM ArtistsRecommendations WHERE userId = ?");
     }
     
     public ArtistsRecommendation getArtitsRecommendation(int userId) throws SQLException {
@@ -34,11 +34,9 @@ public class ArtistsRecommendationProcess {
         resultSet = selectArtistIdListPreparedStatement.executeQuery();
         myCon.commit();
         
+        resultSet.next();
         String temp = resultSet.getString(1);
-        System.out.println(resultSet.getString(1));
         String[]artistTab = temp.split(",");
-        for(int i = 0; i < artistTab.length; i++)
-            System.out.println(artistTab[i]);
 
         if(artistTab.length > 0) {
             for(int i = 0; i < artistTab.length; i++) {
@@ -48,7 +46,6 @@ public class ArtistsRecommendationProcess {
 
                 artistList.add(new Artist(resultSet.getString(1), resultSet.getString(2)));
             }
-
             artistsRecommendation = new ArtistsRecommendation(userId, artistList);
         }
 
