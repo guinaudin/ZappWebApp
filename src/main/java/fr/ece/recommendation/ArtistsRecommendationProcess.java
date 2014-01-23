@@ -38,6 +38,7 @@ public class ArtistsRecommendationProcess {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ArtistsRecommendationProcess.class.getName()).log(Level.SEVERE, null, ex);
+                 myCon.setAutoCommit(false);
             }
             myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
         }

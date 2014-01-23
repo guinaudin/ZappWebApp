@@ -56,6 +56,7 @@ public class ProfileManager implements Serializable {
                 Logger.getLogger(ProfileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
             myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
+             myCon.setAutoCommit(false);
         }
         
         Statement stmt = myCon.createStatement();
