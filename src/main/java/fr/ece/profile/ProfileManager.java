@@ -48,7 +48,7 @@ public class ProfileManager implements Serializable {
 
     public void actorWeightCalculation() throws SQLException {
         
-        if (myCon.isClosed())
+       /* if (myCon.isClosed())
         {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -57,7 +57,7 @@ public class ProfileManager implements Serializable {
             }
             myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
              myCon.setAutoCommit(false);
-        }
+        }*/
         
         Statement stmt = myCon.createStatement();
         Statement stmt2 = myCon.createStatement();
@@ -188,7 +188,7 @@ public class ProfileManager implements Serializable {
             artistsList = "";
         }
         
-        myCon.close();
+        //myCon.close();
         
     }
 
