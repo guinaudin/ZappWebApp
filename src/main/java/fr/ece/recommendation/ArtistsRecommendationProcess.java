@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ArtistsRecommendationProcess {
     private final PreparedStatement selectArtistPreparedStatement;
     private final PreparedStatement selectArtistIdListPreparedStatement;
-    private final Connection myCon;
+    private  Connection myCon;
     private ResultSet resultSet;
     
     public ArtistsRecommendationProcess() throws SQLException, ClassNotFoundException {
@@ -25,8 +27,20 @@ public class ArtistsRecommendationProcess {
     }
     
     public ArtistsRecommendation getArtitsRecommendation(int userId) throws SQLException {
+       
+        
         ArtistsRecommendation artistsRecommendation = null;
         List<Artist> artistList = new ArrayList<Artist>();
+        
+        if (myCon.isClosed())
+        {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ArtistsRecommendationProcess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
+        }
         
         selectArtistIdListPreparedStatement.setLong(1, userId);
         resultSet = selectArtistIdListPreparedStatement.executeQuery();

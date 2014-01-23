@@ -28,7 +28,7 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 public class ProfileManager implements Serializable {
-    private final Connection myCon;
+    private  Connection myCon;
     private Statement stateListArtistPreferences;
     private Statement stateListNumberUsers;
     private ResultSet result;
@@ -47,6 +47,17 @@ public class ProfileManager implements Serializable {
     }
 
     public void actorWeightCalculation() throws SQLException {
+        
+        if (myCon.isClosed())
+        {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProfileManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
+        }
+        
         Statement stmt = myCon.createStatement();
         Statement stmt2 = myCon.createStatement();
         Statement stmt3 = myCon.createStatement();
