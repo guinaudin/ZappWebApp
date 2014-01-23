@@ -171,6 +171,8 @@ public class ProfileManager implements Serializable {
             }
             artistsList = "";
         }
+        
+        myCon.close();
     }
 
     private int getNumberUsers() throws SQLException {

@@ -47,6 +47,8 @@ public class ArtistsRecommendationProcess {
             }
             artistsRecommendation = new ArtistsRecommendation(userId, artistList);
         }
+        
+        myCon.close();
 
         return artistsRecommendation;
     }
