@@ -1,7 +1,7 @@
 package fr.ece.recommendation;
 
 public class Artist {
-    
+    //Test GuillaumeT
     private String firstName;
     private String familyName;
     
