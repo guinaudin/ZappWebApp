@@ -66,7 +66,7 @@ public class ArtistsRecommendationProcess {
             }
 
         }
-        myCon.close();
+        //myCon.close();
 
         return artistsRecommendation;
     }

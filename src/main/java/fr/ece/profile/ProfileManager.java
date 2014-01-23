@@ -157,10 +157,12 @@ public class ProfileManager implements Serializable {
                 if (resultSet.getInt(1) == 1) {
                     PreparedStatement update = myCon.prepareStatement("UPDATE ArtistsRecommendations SET artistIdList = ? WHERE userId = ?");
                     for (int i = 0; i < entry.getValue().size(); i++) {
-                        if(i == entry.getValue().size() - 1)
+                        if(i == entry.getValue().size() - 1) {
                             artistsList = artistsList + entry.getValue().get(i).getItemID();
-                        else
+                        }
+                        else {
                             artistsList = artistsList + entry.getValue().get(i).getItemID() + ",";
+                        }
                     }
                     update.setString(1, artistsList);
                     update.setLong(2, entry.getKey());
@@ -171,10 +173,12 @@ public class ProfileManager implements Serializable {
                     PreparedStatement insert = myCon.prepareStatement("INSERT INTO ArtistsRecommendations (userId, artistIdList) VALUES (?,?)");
                     insert.setLong(1, entry.getKey());
                     for (int i = 0; i < entry.getValue().size(); i++) {
-                        if(i == entry.getValue().size() - 1)
+                        if(i == entry.getValue().size() - 1) {
                             artistsList = artistsList + entry.getValue().get(i).getItemID();
-                        else
+                        }
+                        else {
                             artistsList = artistsList + entry.getValue().get(i).getItemID() + ",";
+                        }
                     }
                     insert.setString(2, artistsList);
                     insert.executeUpdate();
@@ -184,7 +188,8 @@ public class ProfileManager implements Serializable {
             artistsList = "";
         }
         
-        //myCon.close();
+        myCon.close();
+        
     }
 
     private int getNumberUsers() throws SQLException {
