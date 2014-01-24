@@ -19,7 +19,7 @@ public class ArtistsRecommendationProcess {
 
     public ArtistsRecommendationProcess() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
-        myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
+        myCon = DriverManager.getConnection("jdbc:mysql://ec2-176-34-253-124.eu-west-1.compute.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
         //Pas d'auto commit
         myCon.setAutoCommit(false);
 
