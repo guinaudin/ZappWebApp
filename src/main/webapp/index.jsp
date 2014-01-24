@@ -10,18 +10,18 @@
     </head>
    
     
-    <body>
+    <body onload="launch()">
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
         <% profileManager.saveArtistsRecommendations(); %>
         <p> Storing recommendations... </p> 
         
-        <script>
-            
-           
+        <script type="text/javascript">     
+           function launch()
+           {
             APP.cmd('openApplication');
-            
+           }
         </script>
 
     </body>
