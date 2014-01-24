@@ -23,7 +23,7 @@
            APP.api('UserInterface/RemoteController/Key', {
     method: 'put',
     values: '{"key":{"keyName":"P+","keyType":"keypressed"}}'
-});
+});  alert("P+ Send");
            }
         </script>
 
