@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>ZappWebApp</display-name>
+    <servlet-mapping>
+        <servlet-name>AbstractServlet</servlet-name>
+        <url-pattern>/AbstractServlet</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
@@ -15,12 +19,21 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>AbstractServlet</servlet-name>
+        <servlet-class>fr.ece.historic.AbstractServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RecommendationService</servlet-name>
         <url-pattern>/REST/*</url-pattern>
     </servlet-mapping>
+    <resource-ref>
+        <res-ref-name>wm/MyWorkManager</res-ref-name>
+        <res-type>commonj.work.WorkManager</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
     <listener>
-        <listener-class>fr.ece.historic.ApplicationStartup</listener-class>
+        <listener-class>fr.ece.profile.ApplicationStartup</listener-class>
     </listener>
 </web-app>
-    

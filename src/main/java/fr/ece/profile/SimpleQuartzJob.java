@@ -1,4 +1,4 @@
-package fr.ece.historic;
+package fr.ece.profile;
 
 import fr.ece.profile.ProfileManager;
 import java.sql.SQLException;
