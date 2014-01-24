@@ -20,8 +20,10 @@
         <script type="text/javascript">     
            function launch()
            {
-            APP.name = 'Google';
-            APP.cmd('openApplication');
+           APP.api('UserInterface/RemoteController/Key', {
+    method: 'put',
+    values: '{"key":{"keyName":"P+","keyType":"keypressed"}}'
+});
            }
         </script>
 

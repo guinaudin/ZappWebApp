@@ -36,7 +36,7 @@
     APP.channelName = null;
     APP.channelId   = null;
 
-    APP.ip          = document.location.hostname; // 127.0.0.1  // IP localhost (avec Node local) OU // '10.1.0.138' // IP box
+    APP.ip          =   '10.0.2.2';//document.location.hostname; // 127.0.0.1  // IP localhost (avec Node local) OU // '10.1.0.138' // IP box
     APP.port        = '8080';
     APP.basepath    = 'api.bbox.lan/V0/';
 
