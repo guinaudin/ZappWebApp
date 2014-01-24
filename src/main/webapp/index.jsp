@@ -19,7 +19,7 @@
         
         <script>
             
-            APP.name = 'Google'; // Change global and call command after
+           
             APP.cmd('openApplication');
             
         </script>
