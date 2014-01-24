@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <%@ include file="app_api.js" %>
+      <script language="JavaScript" type="text/JavaScript" src="app_api.js"></script>
         <title>JSP Page</title>
     </head>
    
