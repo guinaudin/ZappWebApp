@@ -33,7 +33,7 @@ public class ArtistsRecommendationProcess {
         ArtistsRecommendation artistsRecommendation = null;
         List<Artist> artistList = new ArrayList<Artist>();
 
-       /* if (myCon.isClosed()) {
+        if (myCon.isClosed()) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
@@ -41,7 +41,7 @@ public class ArtistsRecommendationProcess {
                  myCon.setAutoCommit(false);
             }
             myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
-        }*/
+        }
 
         selectArtistIdListPreparedStatement.setLong(1, userId);
         resultSet = selectArtistIdListPreparedStatement.executeQuery();
@@ -66,7 +66,7 @@ public class ArtistsRecommendationProcess {
             }
 
         }
-        //myCon.close();
+        myCon.close();
 
         return artistsRecommendation;
     }
