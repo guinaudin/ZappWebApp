@@ -31,7 +31,7 @@ public class ApplicationStartup implements ServletContextListener{
             CronTrigger cronTrigger = new CronTrigger("cronTrigger", "triggerGroup2");
             try {
                 // setup CronExpression
-                CronExpression cexp = new CronExpression("0 25 5 ? * THU");
+                CronExpression cexp = new CronExpression("0 20 10 ? * FRI");
                 // Assign the CronExpression to CronTrigger
                 cronTrigger.setCronExpression(cexp);
             } catch (Exception e) {
