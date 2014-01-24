@@ -1,4 +1,4 @@
-package fr.ece.historic;
+package fr.ece.profile;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
