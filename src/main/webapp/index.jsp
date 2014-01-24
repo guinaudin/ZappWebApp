@@ -8,10 +8,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <p>Storing recommendations...</p>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
         <% profileManager.saveArtistsRecommendations(); %>
+        <p> Storing recommendations... </p> 
+
     </body>
 </html>
