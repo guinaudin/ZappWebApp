@@ -5,10 +5,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+         <%@ include file="app_api.js" %>
         <title>JSP Page</title>
     </head>
-    <%@ include file="app_api.js" %>
+   
+    
     <body>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
