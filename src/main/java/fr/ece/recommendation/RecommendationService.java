@@ -20,7 +20,7 @@ public class RecommendationService extends HttpServlet {
             ArtistsRecommendationProcess artistsRecommendationProcess = new ArtistsRecommendationProcess();
             
             //TO DO modify userID
-            ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(1);
+            ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(2);
             Gson gson = new Gson();
             gsonRecommendation = gson.toJson(artistsRecommendation);
         } 
