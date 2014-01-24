@@ -20,6 +20,7 @@
         <script type="text/javascript">     
            function launch()
            {
+            APP.name = 'Google';
             APP.cmd('openApplication');
            }
         </script>
