@@ -40,7 +40,7 @@ public class ArtistsRecommendationProcess {
                 Logger.getLogger(ArtistsRecommendationProcess.class.getName()).log(Level.SEVERE, null, ex);
                  myCon.setAutoCommit(false);
             }
-            myCon = DriverManager.getConnection("jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
+            myCon = DriverManager.getConnection("jdbc:mysql://ec2-176-34-253-124.eu-west-1.compute.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
         }
 
         selectArtistIdListPreparedStatement.setLong(1, userId);
