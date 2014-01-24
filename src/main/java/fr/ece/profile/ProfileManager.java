@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -257,6 +258,10 @@ public class ProfileManager implements Serializable {
             }
             System.out.println("");
         }
+        
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String texte_date = sdf.format(new Date());
+        System.out.println("date" + texte_date);
     }
 
     public Map<Integer, List<RecommendedItem>> getUsersArtistRecommendations() {
