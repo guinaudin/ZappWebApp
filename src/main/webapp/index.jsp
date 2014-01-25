@@ -10,7 +10,7 @@
     </head>
    
     
-    <body onload="launch()">
+    <body>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
