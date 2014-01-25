@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <script language="JavaScript" type="text/JavaScript" src="app_api.js"></script>
+      <script language="JavaScript" type="text/JavaScript" src="./js/app-api.js"></script>
         <title>JSP Page</title>
     </head>
    
