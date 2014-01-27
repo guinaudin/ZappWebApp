@@ -97,7 +97,7 @@
 			]},
 			{type: 'a', title: 'NodeJS log view', id: 'NodeLogView'},
 			{type: 'a', title: 'NodeJS Reboot', id: 'NodeReboot'},
-			{type: 'a', title: 'NodeJS clear log', id: 'NodeClearLog'}/*,
+			{type: 'a', title: 'NodeJS clear log', id: 'ClearLog'}/*,
 			{type: 'i', title: 'NodeJS log URL', id: 'nodeLogUrl'}*/
 		]
 	};
