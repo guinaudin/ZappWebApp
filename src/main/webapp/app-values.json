@@ -1,0 +1,82 @@
+{
+    "netstat": "Offline",
+    "model": "XXXXY",
+    "serial": "000002",
+    "versionSoft": "00001",
+    "versionApi": "0.0.2",
+    "ip": "192.168.1.90",
+    "mask": "255.255.255.0",
+    "dhcp": "1",
+    "datetime": "2013-06-29 17:03",
+    "date": "2013-06-29",
+    "time": "17:03",
+    "upgradeMode": "1",
+    "pds": "2",
+    "pdsList": [{
+        "id": "1",
+        "name": "Music Baltic",
+        "img": "http://www.illegal.lv/pasakumi_files/2011_baltic_club_music_festival_2011_logo_black.jpg",
+        "url": "rtmp://80.232.172.37/rtplive/vlc.sdp"
+    }],
+    "serviceId": "85",
+    "profilsId": [{
+        "id": "20",
+        "nickname": "Analaure",
+        "avatar": "./img/analaure-861132131465.jpg",
+        "oauth": [{
+            "name": "facebook",
+            "nickname": "toto",
+            "cookie": "",
+            "token": ""
+        }, {
+            "name": "twitter",
+            "nickname": "toto",
+            "cookie": "",
+            "token": ""
+        }]
+    }, {
+        "id": "21",
+        "nickname": "Philippe",
+        "avatar": "./img/philippe-861132131466.jpg",
+        "oauth": [{
+            "name": "facebook",
+            "nickname": "toto",
+            "cookie": "",
+            "token": ""
+        }, {
+            "name": "twitter",
+            "nickname": "toto",
+            "cookie": "",
+            "token": ""
+        }]
+    }],
+    "profilsMode": "1",
+    "invitieKeyApi": "a1a1a1a1a1a1a1a1a1",
+    "developperId": "a1a1a1a1a1a1a1a1a1",
+    "applicationsList": [{
+        "id": "10",
+        "name": "Twitter",
+        "img": "./img/twitter.jpg",
+        "url": "http://www.twitter.com",
+        "infos": "tweet tweet"
+    }, {
+        "id": "11",
+        "name": "Google",
+        "img": "./img/google.jpg",
+        "url": "http://www.google.com",
+        "infos": "search engine"
+    }, {
+        "id": "11",
+        "name": "Toto",
+        "img": "./img/google.jpg",
+        "url": "http://www.toto.com",
+        "infos": "search engine"
+    }],
+    "executionMode": "1",
+    "bstoreKeyApi": "a1a1a1a1a1a1a1a1a1",
+    "qtLogLevel": "1",
+    "qtLogUrl": "logs-qt.html",
+    "nodeLogLevel": "1",
+    "nodeLogUrl": "logs-node.html",
+    "action": "RESEAUX"
+}
