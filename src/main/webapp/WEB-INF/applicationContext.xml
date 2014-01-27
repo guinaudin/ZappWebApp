@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+    <Resource name="wm/MyWorkManager" 
+		auth="Container"
+		type="commonj.work.WorkManager"
+		factory="de.myfoo.commonj.work.FooWorkManagerFactory" 
+		minThreads="5" 
+		maxThreads="15" 
+    />
+</context>

@@ -23,6 +23,11 @@
     
     <dependencies>
         <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-commonj_1.1_spec</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
@@ -60,6 +65,20 @@
     </dependencies>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/main/webapp/WEB-INF</directory>
+                <filtering>true</filtering>
+            </testResource>
+
+            <testResource>
+                <directory>src/main/webapp/WEB-INF</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*-context.xml</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

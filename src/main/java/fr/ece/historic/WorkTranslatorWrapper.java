@@ -1,62 +1,30 @@
 package fr.ece.historic;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
+import commonj.work.Work;
 
-public class WorkTranslatorWrapper implements Translator, Work {
-    private final Translator impl;
+public class WorkTranslatorWrapper implements HistoricMaker ,Work {
+    private final HistoricMaker historicMaker;
 
-    public WorkTranslatorWrapper(Translator impl) {
-        this.impl = impl;
-    }
-        
-    @Override
-    public String getSource() {
-        return this.impl.getSource();
+    public WorkTranslatorWrapper(HistoricMaker historicMaker) {
+        this.historicMaker = historicMaker;
     }
 
     @Override
-    public String getTranslation() {
-        return this.impl.getTranslation();
-    }
-
-    @Override
-    public void translate() {
-        this.impl.translate();
-    }
-
     public void release() {
     }
 
+    @Override
     public boolean isDaemon() {
         return false;
     }
+    
+    @Override
+    public void realizeHistoric() {
+        historicMaker.realizeHistoric();
+    }
 
+    @Override
     public void run() {
-        translate();
-    }
-
-    @Override
-    public String toString() {
-        return this.impl.toString();
-    }
-
-    @Override
-    public void doWork() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setEnqueueTime(long timeInMillis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public long getEnqueueTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        realizeHistoric();
     }
 }

@@ -15,14 +15,11 @@
         <% profileManager.actorWeightCalculation(); %>
         <% profileManager.findArtistPreferences(10); %>
         <% profileManager.saveArtistsRecommendations(); %>
+        
         <p> Storing recommendations... </p> 
         
         <script>
-            
-           
             APP.cmd('openApplication');
-            
         </script>
-
     </body>
 </html>
