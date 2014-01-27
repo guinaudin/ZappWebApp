@@ -26,11 +26,11 @@ limitations under the License.
         
         <script type="text/javascript">     
            function launch(){
-           APP.name = 'Admin'; // Change global and call command after
-            APP.cmd('openApplication');
-            console.log("REUSSI");
-
-           }
+          APP.api('/Media', {
+          method: 'get'
+    
+});
+        console.log("done");
         </script>
     </body>
 </html>
