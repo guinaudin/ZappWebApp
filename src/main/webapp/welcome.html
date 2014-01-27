@@ -27,13 +27,14 @@ limitations under the License.
         <script type="text/javascript">     
            function launch(){
           APP.api('/Media', {
-          method: 'get'
-          
-    
+          method: 'get'       
         });
 
-         console.log("BOB"+window.location.search.replace("mediaTitle"));   
-          console.log("done");
+         APP.api('Notification/subscribe', {
+    method: 'post',
+    values: '{"appID":"zapp","resources":[{"resourceID":"Media"}]}'
+        });
+                            }
         </script>
     </body>
 </html>
