@@ -26,11 +26,10 @@ limitations under the License.
         
         <script type="text/javascript">     
            function launch(){
-               
-               APP.cmd('openApplication', { // Will open Google on the TV
-    url: 'Applications/Google'
-});
-               
+             
+             APP.name = 'Google'; // Change global and call command after
+APP.cmd('openApplication');
+
                             }
         </script>
     </body>
