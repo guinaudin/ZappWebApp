@@ -24,8 +24,11 @@ limitations under the License.
      <script type="text/javascript">     
            function launch(){
              
-             APP.name = 'Google'; // Change global and call command after
-             APP.cmd('openApplication');
+             APP.api('UserInterface/RemoteController/Key', {
+            method: 'put',
+            values: '{"key":{"keyName":"P+","keyType":"keypressed"}}'
+});
+        console.log("Test  ");
 
                             }
         </script>
