@@ -1,6 +1,5 @@
 package fr.ece.profile;
 
-import fr.ece.profile.ProfileManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,32 +7,34 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-public class SimpleQuartzJob implements Job {
+/**Class establishing periodically the recommendations for all users using Mahout*/
+public class ProfileQuartzJob implements Job {
     private ProfileManager profileManager;
 
-    public SimpleQuartzJob() {
+    public ProfileQuartzJob() {
         try {
             profileManager = new ProfileManager();
         } catch (SQLException ex) {
-            Logger.getLogger(SimpleQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfileQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SimpleQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfileQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    /**executing and saving the recommendation for all user
+     * @param context
+     * @throws org.quartz.JobExecutionException*/
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         try {
-            /*Date d1 = new Date();
-            SimpleDateFormat df = new SimpleDateFormat("MM/dd/YYYY HH:mm a");
-            String formattedDate = df.format(d1);
-            
-            System.out.println(formattedDate);*/
+            //Calculating the actor preferences
             profileManager.actorWeightCalculation();
+            //Finding the top 10 artists recommended
             profileManager.findArtistPreferences(10);
+            //Saving recommendations in the database
             profileManager.saveArtistsRecommendations();
         } catch (SQLException ex) {
-            Logger.getLogger(SimpleQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProfileQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**Servlet to get the recommended artists on a JSON format*/
 @Path("/WebService")
 public class RecommendationService extends HttpServlet {
     @GET

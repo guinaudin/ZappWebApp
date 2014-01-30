@@ -27,6 +27,7 @@ import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
+/**Class establishing the user profile with Mahout*/
 public class ProfileManager implements Serializable {
     private  Connection myCon;
     private Statement stateListArtistPreferences;
@@ -36,10 +37,9 @@ public class ProfileManager implements Serializable {
     private Map<Integer, List<RecommendedItem>> usersArtistRecommendations;
     
     public ProfileManager() throws SQLException, ClassNotFoundException {
-        //Etablissement de la connection à la BDD
+        //Establishing the database connection
         Class.forName("com.mysql.jdbc.Driver");
         myCon = DriverManager.getConnection("jdbc:mysql://ec2-176-34-253-124.eu-west-1.compute.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
-        //Pas d'auto commit
         myCon.setAutoCommit(false);
         
         usersArtistRecommendations = new HashMap<Integer, List<RecommendedItem>>();
@@ -47,7 +47,7 @@ public class ProfileManager implements Serializable {
     }
 
     public void actorWeightCalculation() throws SQLException {
-        
+        //re-establishing connection with the databse if nescessary
         if (myCon.isClosed())
         {
             try {
@@ -56,7 +56,7 @@ public class ProfileManager implements Serializable {
                 Logger.getLogger(ProfileManager.class.getName()).log(Level.SEVERE, null, ex);
             }
             myCon = DriverManager.getConnection("jdbc:mysql://ec2-176-34-253-124.eu-west-1.compute.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
-             myCon.setAutoCommit(false);
+            myCon.setAutoCommit(false);
         }
         
         Statement stmt = myCon.createStatement();
@@ -76,14 +76,14 @@ public class ProfileManager implements Serializable {
             ResultSet rs2 = stmt2.executeQuery(query);
             myCon.commit();
 
-            //récupère le nb de progtv vus par ce user
+            //Getting the number of programs seen by the user
             rs2.last();
             row = rs2.getRow();
             rs2.beforeFirst();
             
             while (rs2.next()) {
                 Long prodId = rs2.getLong("progId");
-                //récupère les acteurs qui ont joués dans les progTV vus
+                //Getting the artists playing in each program
                 ResultSet rs3 = stmt3.executeQuery(
                         "SELECT artistId FROM ArtistsPlayIn WHERE progId = " + prodId + " "); //TODO PBM ICI car pas de distinction des rôles (je prends tlm, pas seulement les acteurs)
 
@@ -99,11 +99,9 @@ public class ProfileManager implements Serializable {
                 }
             }
 
-            //calcul de la pondération par acteur
+            //Making artists ponderation
             for (Map.Entry<Long, Integer> entry : actorRecurrence.entrySet()) {
-                //calcule le poids pour un acteur donné
                 float newWeight = (float) entry.getValue() / row;
-                //save le nouveau poids
                 actorWeight.put(entry.getKey(), newWeight);
             }
 
@@ -116,7 +114,7 @@ public class ProfileManager implements Serializable {
 
                 resultSet.next();
 
-                //si la ligne existe déjà on l'actualise
+                //If the artist aleady exists, we update the line
                 if (resultSet.getInt(1) == 1) {
                     PreparedStatement update = myCon.prepareStatement("UPDATE ArtistPreferences SET artistWeight = ? WHERE userId = ? AND artistId = ?");
                     update.setFloat(1, entryWeight.getValue());
@@ -124,7 +122,7 @@ public class ProfileManager implements Serializable {
                     update.setLong(3, entryWeight.getKey());
                     update.executeUpdate();
                     myCon.commit();
-                } //sinon on la créé
+                } //If not, we create it
                 else {
                     PreparedStatement insert = myCon.prepareStatement("INSERT INTO ArtistPreferences (userId, artistId, artistWeight) VALUES (?,?,?)");
 
@@ -135,12 +133,13 @@ public class ProfileManager implements Serializable {
                     myCon.commit();
                 }
             }
-            //vide les hashmasp pour le prochain user
+            //cleaning HashMap
             actorRecurrence.clear();
             actorWeight.clear();
         }
     }
-
+    
+    /**Saving the artists recommendations of each user*/
     public void saveArtistsRecommendations() throws SQLException {
         String artistsList = "";
         for (Map.Entry<Integer, List<RecommendedItem>> entry : usersArtistRecommendations.entrySet()) {
@@ -189,9 +188,9 @@ public class ProfileManager implements Serializable {
         }
         
         myCon.close();
-        
     }
-
+    
+    /**Function getting the total number of application users*/
     private int getNumberUsers() throws SQLException {
         String query = "SELECT userId FROM Users";
 
@@ -251,12 +250,12 @@ public class ProfileManager implements Serializable {
             }
         }
         
-        for(Map.Entry<Integer, List<RecommendedItem>> entry : usersArtistRecommendations.entrySet()) {
+        /*for(Map.Entry<Integer, List<RecommendedItem>> entry : usersArtistRecommendations.entrySet()) {
             for(RecommendedItem recommendation : entry.getValue()) {
                 System.out.println("recommendation " + entry.getKey() + " = " + recommendation);
             }
             System.out.println("");
-        }
+        }*/
     }
 
     public Map<Integer, List<RecommendedItem>> getUsersArtistRecommendations() {
