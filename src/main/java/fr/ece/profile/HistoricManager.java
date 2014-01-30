@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Timer;
 
+/**Class storing the user historic in the database*/
 public class HistoricManager {
     private Connection myCon;
     private final PreparedStatement addTvProgPreparedStatement;
@@ -22,8 +22,9 @@ public class HistoricManager {
     private int newProgId;
     private String[] artistTab;
     
+    /**Class storing the user historic*/
     public HistoricManager() throws ClassNotFoundException, SQLException {
-        //Etablissement de la connection à la BDD
+        //Establishing the database connection
         Class.forName("com.mysql.jdbc.Driver");
         myCon = DriverManager.getConnection("jdbc:mysql://ec2-176-34-253-124.eu-west-1.compute.amazonaws.com:3306/zappprofile", "guinaudin", "zappTeam");
         //Pas d'auto commit
@@ -32,13 +33,16 @@ public class HistoricManager {
         actualProgId = 0;
         newProgId = 0;
         artistTab = new String[10];
-        SimpleDateFormat df = new SimpleDateFormat("MM/dd/YYYY HH:mm a");
+        SimpleDateFormat df = new SimpleDateFormat("MM/dd/YYYY HH:mm");
         
+        //Stting up the prepared statement*/
         addTvProgPreparedStatement = myCon.prepareStatement("INSERT INTO TvProg(progId, name, summary, startTime , endTime) VALUES (?, ?, ?, ?, ?)");
         addUsersHistoricPreaparedStatement = myCon.prepareStatement("INSERT INTO UsersHistoric(progId, userId) VALUES (?, ?)");
         addArtistPlaysInPreparedStatement = myCon.prepareStatement("INSERT INTO ArtistPlaysIn(progId, artistId) VALUES(?, ?)");
     }
     
+    /**Storing the users historic when he changes a channel*/
+    //TO DO : Storing the user's historic when the channel stays the same with different progId
     public void storeHistoric(int userId) throws SQLException, ParseException {
         //newProgId = ??;
         if(infoBool) {
@@ -47,11 +51,12 @@ public class HistoricManager {
             infoBool = false;
             //remplir artistTab
         }
-                
+        
+        //If the actual program is different from the new one
         if(actualProgId != newProgId) {
-            Timer timer = new Timer();
             endTime = df.parse(df.format(new Date()));
             
+            //If the user stayed more than 15 minutes in front of the program
             if(this.calculateTimeDifference(startTime, endTime) > 0.16666667) {
                 addTvProgPreparedStatement.setLong(1, 0);
                 addTvProgPreparedStatement.setString(2, null);
@@ -77,6 +82,7 @@ public class HistoricManager {
         }
     }
     
+    /**Class determining the number of hours in front of one specific program*/
     private float calculateTimeDifference(Date startTime, Date endTime) {
         long diff = endTime.getTime() - startTime.getTime();
         return diff / 3600000.0f;

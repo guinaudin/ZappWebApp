@@ -1,15 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <script language="JavaScript" type="text/JavaScript" src="app_api.js"></script>
         <title>JSP Page</title>
     </head>
    
-    
     <body>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
@@ -17,9 +13,5 @@
         <% profileManager.saveArtistsRecommendations(); %>
         
         <p> Storing recommendations... </p> 
-        
-        <script>
-            APP.cmd('openApplication');
-        </script>
     </body>
 </html>

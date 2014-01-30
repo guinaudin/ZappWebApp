@@ -13,39 +13,40 @@ import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
 import org.quartz.impl.StdSchedulerFactory;
 
+/**Servlet mettant en place les Cron expressions*/
 public class ApplicationStartup implements ServletContextListener{
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         try {
-            // Initiate a Schedule Factory
+            //Initiate a Schedule Factory
             SchedulerFactory schedulerFactory = new StdSchedulerFactory();
-            // Retrieve a scheduler from schedule factory
+            //Retrieve a scheduler from schedule factory
             Scheduler scheduler = schedulerFactory.getScheduler();
             
-            // Initiate JobDetail with job name, job group, and executable job class
+            //Initiate JobDetail with job name, job group, and executable job class
             JobDetail profileJob =
                     new JobDetail("profileJob", "profileJobGroup", ProfileQuartzJob.class);
             JobDetail historicJob =
                     new JobDetail("historicJob", "historicJobGroup", HistoricQuartzJob.class);
-            // Initiate CronTrigger with its name and group name
+            //Initiate CronTriggers with its name and group name
             CronTrigger cronProfileTrigger = new CronTrigger("cronProfileTrigger", "profileTriggerGroup");
             CronTrigger cronHistoricTrigger = new CronTrigger("cronHistoricTrigger", "historicTriggerGroup");
             try {
-                // setup CronExpression
+                //Setup CronExpressions
                 CronExpression profileCron = new CronExpression("0 0 12 ? * FRI");
                 CronExpression historicCron = new CronExpression("0/25 * * * * *");
-                // Assign the CronExpression to CronTrigger
+                //Assign the CronExpressions to CronTriggers
                 cronProfileTrigger.setCronExpression(profileCron);
                 cronHistoricTrigger.setCronExpression(historicCron);
             } 
             catch (ParseException e) {
                 e.printStackTrace();
             }
-            // schedule a job with JobDetail and Trigger
+            //Schedule jobs with JobDetails and Triggers
             scheduler.scheduleJob(profileJob, cronProfileTrigger);
             scheduler.scheduleJob(historicJob, cronHistoricTrigger);
             
-            // start the scheduler
+            //Start the scheduler
             scheduler.start();
         } catch (SchedulerException ex) {
             Logger.getLogger(ApplicationStartup.class.getName()).log(Level.SEVERE, null, ex);
