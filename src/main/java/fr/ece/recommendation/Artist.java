@@ -1,7 +1,7 @@
 package fr.ece.recommendation;
 
+/**Class which represents a film artist*/
 public class Artist {
-    //Test GuillaumeT
     private String firstName;
     private String familyName;
     

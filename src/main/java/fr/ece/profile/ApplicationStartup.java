@@ -1,5 +1,6 @@
 package fr.ece.profile;
 
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
@@ -21,24 +22,28 @@ public class ApplicationStartup implements ServletContextListener{
             // Retrieve a scheduler from schedule factory
             Scheduler scheduler = schedulerFactory.getScheduler();
             
-            // current time
-            long ctime = System.currentTimeMillis();
-            
             // Initiate JobDetail with job name, job group, and executable job class
-            JobDetail jobDetail =
-                    new JobDetail("jobDetail2", "jobDetailGroup2", SimpleQuartzJob.class);
+            JobDetail profileJob =
+                    new JobDetail("profileJob", "profileJobGroup", ProfileQuartzJob.class);
+            JobDetail historicJob =
+                    new JobDetail("historicJob", "historicJobGroup", HistoricQuartzJob.class);
             // Initiate CronTrigger with its name and group name
-            CronTrigger cronTrigger = new CronTrigger("cronTrigger", "triggerGroup2");
+            CronTrigger cronProfileTrigger = new CronTrigger("cronProfileTrigger", "profileTriggerGroup");
+            CronTrigger cronHistoricTrigger = new CronTrigger("cronHistoricTrigger", "historicTriggerGroup");
             try {
                 // setup CronExpression
-                CronExpression cexp = new CronExpression("0 0 12 ? * FRI");
+                CronExpression profileCron = new CronExpression("0 0 12 ? * FRI");
+                CronExpression historicCron = new CronExpression("0/25 * * * * *");
                 // Assign the CronExpression to CronTrigger
-                cronTrigger.setCronExpression(cexp);
-            } catch (Exception e) {
+                cronProfileTrigger.setCronExpression(profileCron);
+                cronHistoricTrigger.setCronExpression(historicCron);
+            } 
+            catch (ParseException e) {
                 e.printStackTrace();
             }
             // schedule a job with JobDetail and Trigger
-            scheduler.scheduleJob(jobDetail, cronTrigger);
+            scheduler.scheduleJob(profileJob, cronProfileTrigger);
+            scheduler.scheduleJob(historicJob, cronHistoricTrigger);
             
             // start the scheduler
             scheduler.start();

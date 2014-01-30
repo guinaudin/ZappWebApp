@@ -3,6 +3,7 @@ package fr.ece.recommendation;
 import java.util.ArrayList;
 import java.util.List;
 
+/**Class which stores the list of recommended artists for a specific user*/
 public class ArtistsRecommendation {
     private long userId;
     private List<Artist> artists;

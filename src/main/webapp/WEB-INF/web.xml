@@ -5,19 +5,6 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
-    <resource-ref>
-        <res-ref-name>wm/MyWorkManager</res-ref-name>
-        <res-type>commonj.work.WorkManager</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
-    
-    <servlet>
-        <servlet-name>HistoricServlet</servlet-name>
-        <servlet-class>fr.ece.historic.HistoricServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
     <servlet>
         <servlet-name>RecommendationService</servlet-name>
         <servlet-class>
@@ -29,11 +16,6 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>HistoricServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RecommendationService</servlet-name>
         <url-pattern>/REST/*</url-pattern>

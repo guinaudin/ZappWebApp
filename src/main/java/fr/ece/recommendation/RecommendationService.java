@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**Servlet to get the recommended artists on a JSON format*/
 @Path("/WebService")
 public class RecommendationService extends HttpServlet {
     @GET
@@ -20,7 +21,7 @@ public class RecommendationService extends HttpServlet {
             ArtistsRecommendationProcess artistsRecommendationProcess = new ArtistsRecommendationProcess();
             
             //TO DO modify userID
-            ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(2);
+            ArtistsRecommendation artistsRecommendation = artistsRecommendationProcess.getArtitsRecommendation(1);
             Gson gson = new Gson();
             gsonRecommendation = gson.toJson(artistsRecommendation);
         } 
