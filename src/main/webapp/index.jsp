@@ -9,7 +9,7 @@
     <body>
         <jsp:useBean id="profileManager" scope="session" class="fr.ece.profile.ProfileManager" />
         <% profileManager.actorWeightCalculation(); %>
-        <% profileManager.findArtistPreferences(10); %>
+        <% profileManager.findArtistPreferences(30); %>
         <% profileManager.saveArtistsRecommendations(); %>
         
         <p> Storing recommendations... </p> 

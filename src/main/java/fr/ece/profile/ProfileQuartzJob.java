@@ -30,7 +30,7 @@ public class ProfileQuartzJob implements Job {
             //Calculating the actor preferences
             profileManager.actorWeightCalculation();
             //Finding the top 10 artists recommended
-            profileManager.findArtistPreferences(10);
+            profileManager.findArtistPreferences(30);
             //Saving recommendations in the database
             profileManager.saveArtistsRecommendations();
         } catch (SQLException ex) {

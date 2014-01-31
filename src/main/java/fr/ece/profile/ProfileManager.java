@@ -125,7 +125,6 @@ public class ProfileManager implements Serializable {
                 } //If not, we create it
                 else {
                     PreparedStatement insert = myCon.prepareStatement("INSERT INTO ArtistPreferences (userId, artistId, artistWeight) VALUES (?,?,?)");
-
                     insert.setLong(1, userId);
                     insert.setLong(2, entryWeight.getKey());
                     insert.setFloat(3, entryWeight.getValue());
@@ -142,6 +141,7 @@ public class ProfileManager implements Serializable {
     /**Saving the artists recommendations of each user*/
     public void saveArtistsRecommendations() throws SQLException {
         String artistsList = "";
+        
         for (Map.Entry<Integer, List<RecommendedItem>> entry : usersArtistRecommendations.entrySet()) {
             if (!entry.getValue().isEmpty()) {
                 //System.out.println("entry.getValue.getItemId : " +entry.getValue().get(0));
@@ -152,7 +152,7 @@ public class ProfileManager implements Serializable {
 
                 resultSet.next();
 
-                //si la ligne existe déjà on l'actualise
+                //If the artist already exists
                 if (resultSet.getInt(1) == 1) {
                     PreparedStatement update = myCon.prepareStatement("UPDATE ArtistsRecommendations SET artistIdList = ? WHERE userId = ?");
                     for (int i = 0; i < entry.getValue().size(); i++) {
@@ -167,7 +167,7 @@ public class ProfileManager implements Serializable {
                     update.setLong(2, entry.getKey());
                     update.executeUpdate();
                     myCon.commit();
-                } //sinon on la créé
+                }
                 else {
                     PreparedStatement insert = myCon.prepareStatement("INSERT INTO ArtistsRecommendations (userId, artistIdList) VALUES (?,?)");
                     insert.setLong(1, entry.getKey());
