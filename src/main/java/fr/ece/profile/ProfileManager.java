@@ -235,8 +235,8 @@ public class ProfileManager implements Serializable {
             try {
                 //faire test si fichier vide
                 DataModel model = new FileDataModel(new File("ArtistPreferences.csv"));
+                //UserSimilarity similarity = new EuclideanDistanceSimilarity(model);
                 UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-                //how many neighbours ??????? (2)
                 UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
                 Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
                 for (int i = 1; i <= numberUsers; i++) {

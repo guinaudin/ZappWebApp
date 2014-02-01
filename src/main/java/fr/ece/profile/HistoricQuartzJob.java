@@ -27,7 +27,7 @@ public class HistoricQuartzJob implements Job {
         try {
             try {
                 //TO DO : modify the userId depending on the box
-                historicManager.storeHistoric(1);
+                historicManager.storeHistoric(5);
             } catch (ParseException ex) {
                 Logger.getLogger(HistoricQuartzJob.class.getName()).log(Level.SEVERE, null, ex);
             }
